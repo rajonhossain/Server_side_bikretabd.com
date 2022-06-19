@@ -30,14 +30,18 @@ exports.login = (req, res, next) => {
 
 
 exports.regi = (req, res, next) => {
-	const username = "bikreta@gmail.com";
-	const password = "12345678";
+	const username = "deliveryman@gmail.com";
+	const password = "123123";
 
 	const hashPass = bcrypt.hashSync(password, 10);
-	var sql = "INSERT INTO user (username, dbpassword) VALUES ('" + username + "', '" + hashPass + "')";
+	var sql = "INSERT INTO delivery (username, email, dbpassword) VALUES ('" + username + "', '" + username + "', '" + hashPass + "')";
 	db.query(sql);
 	res.redirect('/admin');
 }
+
+
+
+
 
 exports.dash = (req, res, next) => {
 	db.query('select * from settingside', function (error, stt_back_color, fields) {
@@ -67,28 +71,62 @@ exports.dash = (req, res, next) => {
 exports.loginsystem = (req, res, next) => {
 	var username = req.body.username;
 	var password = req.body.password;
+	var panel_name = req.body.panel_name;
 
-	if (username != '' && password != '') {
-		db.query('SELECT * FROM user WHERE username = ?', [username], function (error, results, fields) {
+	if (panel_name === "admin") {
 
-			if (results.length > 0) {
-				bcrypt.compare(password, results[0].dbpassword, function (err, ress) {
-					if (!ress) {
-						res.redirect('/admin');
-					} else {
-						req.session.username = username;
-						req.session.displayname = req.session.username.split("@")[0];
-						req.flash('success', 'Login Successfully!')
-						res.redirect('/admin/dashboard');
-					}
-				});
-			} else {
-				res.redirect('/admin');
-			}
-		});
+		if (username != '' && password != '') {
+			db.query('SELECT * FROM user WHERE username = ?', [username], function (error, results, fields) {
+
+				if (results.length > 0) {
+					bcrypt.compare(password, results[0].dbpassword, function (err, ress) {
+						if (!ress) {
+							res.redirect('/admin');
+						} else {
+							req.session.username = username;
+							req.session.displayname = req.session.username.split("@")[0];
+							req.flash('success', 'Login Successfully!')
+							res.redirect('/admin/dashboard');
+						}
+					});
+				} else {
+					res.redirect('/admin');
+				}
+			});
+		} else {
+			res.redirect('/admin');
+		}
+
+	} else if (panel_name === "delivery") {
+
+
+		if (username != '' && password != '') {
+			db.query('SELECT * FROM delivery WHERE username = ?', [username], function (error, results, fields) {
+
+				if (results.length > 0) {
+					bcrypt.compare(password, results[0].dbpassword, function (err, ress) {
+						if (!ress) {
+							res.redirect('/admin');
+						} else {							
+							req.session.delivery = 'delivery';
+							req.flash('success', 'Login Successfully!')
+							res.redirect('/desh_delivery');
+						}
+					});
+				} else {
+					res.redirect('/admin');
+				}
+			});
+		} else {
+			res.redirect('/admin');
+		}
+
+
+
 	} else {
 		res.redirect('/admin');
 	}
+
 }
 
 

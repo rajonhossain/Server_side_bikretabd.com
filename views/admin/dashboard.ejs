@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Dashboard bikreta bd অনলাইন শপিং মার্কেটপ্লেস</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+    <link href="/css/styles.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+
+
+
+</head>
+
+<body class="sb-nav-fixed">
+    <%- include('header/header.ejs') %>
+
+        <div id="layoutSidenav">
+            <%- include('leftbar/leftbar.ejs') %>
+
+                <div id="layoutSidenav_content">
+                    <main>
+                        <div class="container-fluid px-4">
+                            <h3 class="p-3 mt-4 text-white" <div class="card text-white mb-4"
+                                style="background-color:<%= body_color ?  body_color : 'black' %>">Short Details
+                            </h3>
+
+                            <% if(messages !=0){ %>
+                                <div class="alert text-success py-3 col-md-12 bg-light" role="alert">
+                                    <%= messages %>
+                                </div>
+                                <% } %>
+                                    <div class="row">
+                                        <div class="col-xl-3 col-md-6" style="cursor: pointer">
+                                            <a href="/admin/manage_catagory">
+                                                <div class="card text-white mb-4"
+                                                    style="background-color:<%= body_color ?  body_color : 'black' %>">
+                                                    <div class="card-body text-center">Catagory (10)</div>
+                                                    <div
+                                                        class="card-footer d-flex align-items-center justify-content-between">
+                                                        <div class="small text-white">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="col-xl-3 col-md-6" style="cursor: pointer">
+                                            <a href="/admin/manage_sub_catagory">
+                                                <div class="card text-white mb-4"
+                                                    style="background-color:<%= body_color ?  body_color : 'black' %>">
+                                                    <div class="card-body text-center">Sub Catagory (10)</div>
+                                                    <div
+                                                        class="card-footer d-flex align-items-center justify-content-between">
+                                                        <div class="small text-white">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="col-xl-3 col-md-6" style="cursor: pointer">
+                                            <a href="/admin/manage_item">
+                                                <div class="card text-white mb-4"
+                                                    style="background-color:<%= body_color ?  body_color : 'black' %>">
+                                                    <div class="card-body text-center">Items (10)</div>
+                                                    <div
+                                                        class="card-footer d-flex align-items-center justify-content-between">
+
+                                                        <div class="small text-white">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+
+
+                                        <div class="col-xl-3 col-md-6" style="cursor: pointer">
+                                            <a href="/admin/manage_brand">
+                                                <div class="card text-white mb-4"
+                                                    style="background-color:<%= body_color ?  body_color : 'black' %>">
+                                                    <div class="card-body text-center">Brand (10)</div>
+                                                    <div
+                                                        class="card-footer d-flex align-items-center justify-content-between">
+
+                                                        <div class="small text-white">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+
+
+                                    <!-- client side posting start -->
+                                    <div class="row">
+                                        <div class="col-xl-3 col-md-6" style="cursor: pointer">
+                                            <a href="/admin/manage_catagory">
+                                                <div class="card text-white mb-4"
+                                                    style="background-color:<%= body_color ?  body_color : 'black' %>">
+                                                    <div class="card-body text-center">Today Order(10)</div>
+                                                    <div
+                                                        class="card-footer d-flex align-items-center justify-content-between">
+                                                        <div class="small text-white">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="col-xl-3 col-md-6" style="cursor: pointer">
+                                            <a href="/admin/manage_sub_catagory">
+                                                <div class="card text-white mb-4"
+                                                    style="background-color:<%= body_color ?  body_color : 'black' %>">
+                                                    <div class="card-body text-center">Today Ording Panding(10)</div>
+                                                    <div
+                                                        class="card-footer d-flex align-items-center justify-content-between">
+                                                        <div class="small text-white">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="col-xl-3 col-md-6" style="cursor: pointer">
+                                            <a href="/admin/manage_item">
+                                                <div class="card text-white mb-4"
+                                                    style="background-color:<%= body_color ?  body_color : 'black' %>">
+                                                    <div class="card-body text-center">Today Order Cance(10)</div>
+                                                    <div
+                                                        class="card-footer d-flex align-items-center justify-content-between">
+
+                                                        <div class="small text-white">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+
+
+                                        <div class="col-xl-3 col-md-6" style="cursor: pointer">
+                                            <a href="/admin/manage_brand">
+                                                <div class="card text-white mb-4"
+                                                    style="background-color:<%= body_color ?  body_color : 'black' %>">
+                                                    <div class="card-body text-center">Today Offer(10)</div>
+                                                    <div
+                                                        class="card-footer d-flex align-items-center justify-content-between">
+
+                                                        <div class="small text-white">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <!-- client side posting End -->
+
+                        </div>
+                    </main>
+                    <footer class="py-4 bg-light mt-auto">
+                        <div class="container-fluid px-4">
+                            <div class="d-flex align-items-center justify-content-between small">
+                                <div class="text-muted">Copyright &copy; bikretabd অনলাইন শপিং মার্কেটপ্লেস 2022
+                                </div>
+                                <div>
+                                    <a href="#">Privacy Policy</a>
+                                    &middot;
+                                    <a href="#">Terms &amp; Conditions</a>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+        </div>
+
+
+        <style>
+            .row a {
+                text-decoration: none;
+                font-size: 18px;
+            }
+        </style>
+
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            crossorigin="anonymous"></script>
+        <script src="/js/scripts.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+        <script src="/js/datatables-simple-demo.js"></script>
+</body>
+
+</html>

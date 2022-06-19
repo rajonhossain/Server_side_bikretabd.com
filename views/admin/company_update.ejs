@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Dashboard bikreta bd অনলাইন শপিং মার্কেটপ্লেস</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+    <link href="/css/styles.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="sb-nav-fixed">
+    <%- include('header/header.ejs') %>
+
+        <div id="layoutSidenav">
+            <%- include('leftbar/leftbar.ejs') %>
+
+                <div id="layoutSidenav_content">
+                    <main>
+                        <div class="container-fluid px-4">
+                            <h5 class="mt-4 text-light p-2"
+                                style="background-color:<%= body_color ?  body_color : 'black' %>">
+                                <i class="fa-solid fa-rectangle-list"></i>
+                                Company Profile Update
+                            </h5>
+                            <br />
+                            <br />
+                            <form action="/admin/company_profile_update" method="post" enctype="multipart/form-data">
+                                <div class="form-group row">
+                                    <label for="staticEmail" class="col-sm-2 col-form-label">Company Name</label>
+                                    <div class="col-sm-10">
+                                        <input type="hidden" name="company_id" value="<%= id %>">
+                                        <input type="text" class="form-control" name="company_name"
+                                            value="<%= company_name %>" placeholder="Company name">
+                                    </div>
+                                </div>
+                                <br />
+
+                                <div class="form-group row">
+                                    <label for="staticEmail" class="col-sm-2 col-form-label">Company Address</label>
+                                    <div class="col-sm-10">
+                                        <textarea class="form-control" rows="5"
+                                            name="company_address"><%= company_address %></textarea>
+                                    </div>
+                                </div>
+
+                                <br />
+                                <div class="form-group row">
+                                    <label for="inputPassword" class="col-sm-2 col-form-label">Company Logo</label>
+                                    <div class="col-sm-3">
+                                        <input type="file" accept="image/*" onchange="brandmehod(event)"
+                                            class="form-control" name="company_logo">
+                                        <img id="outbrand"
+                                            src="http://localhost:3000/company_info/<%= company_img %>" />
+                                    </div>
+                                </div>
+
+
+                                <br />
+                                <div class="form-group row">
+                                    <label for="inputPassword" class="col-sm-2 col-form-label"></label>
+                                    <div class="col-md-10">
+                                        <button type="submit" class="btn btn-success"
+                                            style="width: 20%; padding:10px">Save</button>
+                                        <button type="reset" class="btn btn-primary"
+                                            style="width: 20%; padding:10px">Reset</button>
+                                    </div>
+                                </div>
+                                <br />
+                            </form>
+
+
+
+
+
+                            <!-- header background color start  -->
+
+                            <div class="col-6">
+                                <table class="table" style="color:<%= body_color ?  body_color : 'black' %>">
+                                    <div class="p-3 text-center text-light"
+                                        style="background-color:<%= body_color ?  body_color : 'black' %>">Theme Color
+                                    </div>
+                                    <tr>
+                                        <td>Admin Header and leftbar background Color</td>
+                                        <td>
+                                            <form action="/admin/header_background_color" method="post">
+                                                <input type="color" name="header_back_color"
+                                                    value="<%= setting_header %>" onchange="form.submit()" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Admin Body and Title background Color</td>
+                                        <td>
+
+                                            <input type="color" name="body_back_color" value="<%= body_color %>"
+                                                onchange="form.submit()" />
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </table>
+
+
+
+
+                                <div class="p-3 text-center text-light"
+                                    style="background-color:<%= body_color ?  body_color : 'black' %>">Add form Enable /
+                                    Desable</div>
+
+                                <table class="table" style="color:<%= body_color ?  body_color : 'black' %>">
+
+                                    <tr>
+                                        <td>Cataogry Add <%= cat !=0 ? "Show" : "Hide" %>
+                                        </td>
+                                        <td>
+                                            <form action="/admin/form_display" method="post">
+                                                <select class="form-select" name="cat_form"
+                                                    aria-label="Default select example" onchange="form.submit()">
+                                                    <option selected>
+                                                        <%= cat !=0 ? "Form Display Show" : "Form Display Hide" %>
+                                                    </option>
+                                                    <option value="1">Form Display Show</option>
+                                                    <option value="0">Form Display Hide</option>
+                                                </select>
+                                            </form>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Sub Cataogry display <%= sub_cat !=0 ? "Show" : "Hide" %>
+                                        </td>
+                                        <td>
+                                            <form action="/admin/form_display" method="post">
+                                                <select class="form-select" name="sub_cat_form"
+                                                    aria-label="Default select example" onchange="form.submit()">
+                                                    <option selected>
+                                                        <%= sub_cat !=0 ? "Form Display Show" : "Form Display Hide" %>
+                                                    </option>
+                                                    <option value="1">Form Display Show</option>
+                                                    <option value="0">Form Display Hide</option>
+                                                </select>
+                                            </form>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Items Add <%= item !=0 ? "Show" : "Hide" %>
+                                        </td>
+                                        <td>
+                                            <form action="/admin/form_display" method="post">
+                                                <select class="form-select" name="item_form"
+                                                    aria-label="Default select example" onchange="form.submit()">
+                                                    <option selected>
+                                                        <%= item !=0 ? "Form Display Show" : "Form Display Hide" %>
+                                                    </option>
+                                                    <option value="1">Form Display Show</option>
+                                                    <option value="0">Form Display Hide</option>
+                                                </select>
+                                            </form>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Brand Add <%= brand !=0 ? "Show" : "Hide" %>
+                                        </td>
+                                        <td>
+                                            <form action="/admin/form_display" method="post">
+                                                <select class="form-select" name="brand_form"
+                                                    aria-label="Default select example" onchange="form.submit()">
+                                                    <option selected>
+                                                        <%= brand !=0 ? "Form Display Show" : "Form Display Hide" %>
+                                                    </option>
+                                                    <option value="1">Form Display Show</option>
+                                                    <option value="0">Form Display Hide</option>
+                                                </select>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <!-- header and sidebar background color End -->
+
+
+                        </div>
+                    </main>
+
+                </div>
+        </div>
+
+
+        <style>
+            #outbrand {
+                width: 100px;
+                height: 100px;
+                border: 1px solid rgb(175, 172, 172);
+                margin-top: 5px;
+            }
+
+            .form_validation {
+                width: 80%;
+                height: 81%;
+                background: #ef06318a;
+                z-index: 10;
+                position: absolute;
+                text-align: center;
+                padding-top: 50px;
+                font-size: 30px;
+                color: red;
+            }
+        </style>
+
+        <script>
+            var brandmehod = function (event) {
+                var output = document.getElementById('outbrand');
+                output.src = URL.createObjectURL(event.target.files[0]);
+                output.onload = function () {
+                    URL.revokeObjectURL(output.src) // free memory
+                }
+            };
+
+
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            crossorigin="anonymous"></script>
+        <script src="/js/scripts.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+        <script src="/js/datatables-simple-demo.js"></script>
+</body>
+
+</html>

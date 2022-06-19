@@ -1,0 +1,179 @@
+<div id="layoutSidenav_nav">
+    <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+        <div class="sb-sidenav-menu">
+            <div class="nav" style="background-color:<%= setting_header ? setting_header : 'black' %>">
+                <img id="scompany_img" src="Lodding..." alt="Loadding">
+                <a class="nav-link" href="/admin/dashboard">
+                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    Dashboard
+                </a>
+
+                <!-- Cagatory -->
+                <a class="nav-link collapsed" href="" data-bs-toggle="collapse" data-bs-target="#catagory"
+                    aria-expanded="false" aria-controls="collapseLayouts">
+                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>Catagory
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                <div class="collapse" id="catagory" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link" href="/admin/add_catagory">Add Catagory</a>
+                        <a class="nav-link" href="/admin/manage_catagory">Manage Catagory</a>
+                    </nav>
+                </div>
+
+
+                <!-- sub Cagatory -->
+                <a class="nav-link collapsed" href="" data-bs-toggle="collapse" data-bs-target="#sub_catagory"
+                    aria-expanded="false" aria-controls="collapseLayouts">
+                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>Sub Catagory
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                <div class="collapse" id="sub_catagory" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link" href="/admin/add_sub_catagory">Add Sub Catagory</a>
+                        <a class="nav-link" href="/admin/manage_sub_catagory" style="font-size: 15px">Manage
+                            SubCatagory</a>
+                    </nav>
+                </div>
+
+
+                <!-- items -->
+                <a class="nav-link collapsed" href="" data-bs-toggle="collapse" data-bs-target="#item"
+                    aria-expanded="false" aria-controls="collapseLayouts">
+                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>Items
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                <div class="collapse" id="item" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link" href="/admin/add_item">Add Items</a>
+                        <a class="nav-link" href="/admin/manage_item">Manage Items</a>
+                    </nav>
+                </div>
+
+
+                <!-- brand -->
+                <a class="nav-link collapsed" href="" data-bs-toggle="collapse" data-bs-target="#brand"
+                    aria-expanded="false" aria-controls="collapseLayouts">
+                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>Brand
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                <div class="collapse" id="brand" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link" href="/admin/add_brand">Add Brand</a>
+                        <a class="nav-link" href="/admin/manage_brand">Manage Brand</a>
+                    </nav>
+                </div>
+
+
+
+
+
+                <div class="sb-sidenav-menu-heading">Interface</div>
+                <a class="nav-link collapsed" href="" data-bs-toggle="collapse" data-bs-target="#collapseLayouts"
+                    aria-expanded="false" aria-controls="collapseLayouts">
+                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                    Layouts
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
+                    data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link" href="">
+                            Static Navigation</a>
+                        <a class="nav-link" href="">
+                            Light Sidenav</a>
+                    </nav>
+                </div>
+
+
+
+                <a class="nav-link collapsed" href="" data-bs-toggle="collapse" data-bs-target="#collapsePages"
+                    aria-expanded="false" aria-controls="collapsePages">
+                    <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                    Pages
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
+                    data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                            Authentication
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne"
+                            data-bs-parent="#sidenavAccordionPages">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="">Login</a>
+                                <a class="nav-link" href="">Register</a>
+                                <a class="nav-link" href="">Forgot Password</a>
+                            </nav>
+                        </div>
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#pagesCollapseError" aria-expanded="false"
+                            aria-controls="pagesCollapseError">
+                            Error
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne"
+                            data-bs-parent="#sidenavAccordionPages">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="">401 Page</a>
+                                <a class="nav-link" href="">404 Page</a>
+                                <a class="nav-link" href="">500 Page</a>
+                            </nav>
+                        </div>
+                    </nav>
+                </div>
+
+                <div class="sb-sidenav-menu-heading">Addons</div>
+                <a class="nav-link" href="">
+                    <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                    Charts
+                </a>
+                <a class="nav-link" href="">
+                    <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                    Tables
+                </a>
+            </div>
+        </div>
+    </nav>
+</div>
+
+
+<script>
+
+
+    window.onload = function () {
+        fetch('http://localhost:3000/admin/get_profile')
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                console.log(data.data[0].company_img)
+                document.getElementById("scompany_img").src = data.data[0].image_path + data.data[0].company_img;
+            });
+    };
+
+
+
+
+</script>
+
+
+<style>
+    .nav img {
+        margin-left: 18px;
+    }
+
+    #company_img {
+        width: 100px;
+        height: 100px;
+        border: 1px solid rgb(175, 172, 172);
+        margin-top: 5px;
+    }
+
+    #scompany_img {
+        width: 135px;
+        height: 76px;
+    }
+</style>

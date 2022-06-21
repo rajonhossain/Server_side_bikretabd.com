@@ -5,8 +5,9 @@ var bodyParser = require('body-parser');
 var db = require('../db.js');
 const bcrypt = require('bcrypt');
 const fs = require('fs').promises;
+require('dotenv').config()
 
-
+console.log(process.env.base_url+"/catagory")
 
 
 
@@ -83,7 +84,9 @@ exports.loginsystem = (req, res, next) => {
 						if (!ress) {
 							res.redirect('/admin');
 						} else {
+							req.session.admin = "admin";
 							req.session.username = username;
+							console.log(99, req.session.admin);
 							req.session.displayname = req.session.username.split("@")[0];
 							req.flash('success', 'Login Successfully!')
 							res.redirect('/admin/dashboard');
@@ -108,8 +111,7 @@ exports.loginsystem = (req, res, next) => {
 						if (!ress) {
 							res.redirect('/admin');
 						} else {							
-							req.session.delivery = 'delivery';
-							req.flash('success', 'Login Successfully!')
+							req.session.delivery = panel_name;							
 							res.redirect('/desh_delivery');
 						}
 					});
@@ -149,7 +151,7 @@ exports.insertcat = (req, res, next) => {
 	const name = req.body.name;
 	const slug = name.replace(" ", "-");
 	const catagory_img = req.file.filename;
-	const image_path = "http://localhost:3000/catagory";
+	const image_path = process.env.base_url+"/catagory";
 	const meta_description = req.body.metadescription;
 
 	var add_catagory = "INSERT INTO catagoris (name, slug, catagory_img, image_path, meta_description) VALUES ('" + name + "','" + slug + "','" + catagory_img + "','" + image_path + "','" + meta_description + "')";
@@ -211,7 +213,7 @@ exports.insertsubcat = (req, res, next) => {
 	const name = req.body.name;
 	const slug = name.replace(" ", "-");
 	const sub_catagory_img = req.file.filename;
-	const image_path = "http://localhost:3000/subcatagory";
+	const image_path = process.env.base_url+"/subcatagory";
 	const subcategory_id = req.body.subcategory_id;
 
 	var add_subcatagory = "INSERT INTO subcategories (name, slug, sub_catagory_img, image_path, category_id) VALUES('" + name + "','" + slug + "','" + sub_catagory_img + "','" + image_path + "','" + subcategory_id + "')";
@@ -269,7 +271,7 @@ exports.insertitems = (req, res, next) => {
 	const details = req.body.details;
 	const fontimg = req.files[0].filename;
 	const backimg = req.files[1].filename;
-	const image_path = "http://localhost:3000/items_image_file";
+	const image_path = process.env.base_url+"/items_image_file";
 	const discount_price = req.body.dis_price;
 	const regular_price = req.body.regular_price;
 	const stock = req.body.stock;
@@ -332,7 +334,7 @@ exports.insertbrand = (req, res, next) => {
 	const brand_name = req.body.brand_name;
 	const slug = brand_name.replace(" ", "-");
 	const brand_img = req.file.filename;
-	const image_path = "http://localhost:3000/brand_image_path";
+	const image_path = process.env.base_url+"/brand_image_path";
 
 	var add_brand = "INSERT INTO brands(brand_name, slug, brand_img, image_path)VALUES ('" + brand_name + "','" + slug + "','" + brand_img + "','" + image_path + "')";
 	db.query(add_brand);

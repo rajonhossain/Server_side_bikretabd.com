@@ -7,6 +7,8 @@ var admin_setting = require('../controller/admin_setting');
 
 var client_app = require('../controller/client_app');
 
+// var delivery_controller = require('../controller/delivery_controller');
+
 
 var storage = multer.diskStorage({
 	destination: './public/catagory',
@@ -75,7 +77,7 @@ router.use(session({
 
 const session_middleware = (req, res, next) => {
 	try {
-		if (!req.session.username) {
+		if (!req.session.admin) {
 			next();
 		} else {
 			res.redirect('/admin/dashboard');
@@ -83,13 +85,12 @@ const session_middleware = (req, res, next) => {
 	} catch (error) {
 		console.log(error)
 	}
-
 }
 
 
 const auth_middleware = (req, res, next) => {
 	try {
-		if (req.session.username) {
+		if (req.session.admin) {
 			next();
 		} else {
 			res.redirect('/admin');
@@ -97,7 +98,6 @@ const auth_middleware = (req, res, next) => {
 	} catch (error) {
 		res.redirect('/admin');
 	}
-
 }
 
 
@@ -207,6 +207,27 @@ router.get('/get_profile', admin_setting.getprofile);
 
 router.use('/companyprofile', express.static('./public/company_info'));
 router.post('/company_profile_update', companyprofile.single('company_logo'), admin_setting.companyprofile_update);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

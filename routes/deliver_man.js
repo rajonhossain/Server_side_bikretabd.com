@@ -1,13 +1,24 @@
 var express = require('express');
 var router = express.Router();
+var bodyParser = require('body-parser');
+var delivery_controller = require('../controller/delivery_controller');
 
 
+const auth_middleware = (req, res, next) => {
+	try {
+		if (req.session.delivery) {
+			next();
+		} else {
+			res.redirect('/admin');
+		}
+	} catch (error) {
+		res.redirect('/admin');
+	}
+}
 
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.render('deliver_man/delivery_login');
-});
+router.get('/', auth_middleware, delivery_controller.dashboard);
+router.get('/delivery_logoute/:delivery', auth_middleware, delivery_controller.delivery_logout);
 
 
 

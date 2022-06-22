@@ -12,7 +12,7 @@ const auth_middleware = (req, res, next) => {
 			res.redirect('/admin');
 		}
 	} catch (error) {
-		res.redirect('/admin');
+		console.log(error);
 	}
 }
 

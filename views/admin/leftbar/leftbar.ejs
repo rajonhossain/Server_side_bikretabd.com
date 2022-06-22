@@ -143,9 +143,12 @@
 
 <script>
 
+ 
 
     window.onload = function () {
-        fetch('http://localhost:3000/admin/get_profile')
+        
+        var userId= '<%= bas_url %>';        
+        fetch(userId+'/admin/get_profile')
             .then(response => response.json())
             .then(data => {
                 console.log(data);
@@ -153,10 +156,6 @@
                 document.getElementById("scompany_img").src = "/company_info/" + data.data[0].company_img;
             });
     };
-
-
-
-
 </script>
 
 

@@ -7,7 +7,7 @@ const bcrypt = require('bcrypt');
 const fs = require('fs').promises;
 require('dotenv').config()
 
-console.log(process.env.base_url+"/catagory")
+console.log(process.env.base_url)
 
 
 
@@ -61,7 +61,8 @@ exports.dash = (req, res, next) => {
 				body_color: req.session.body_color,
 				setting_header: req.session.header,
 				messages: req.flash('success'),
-				displayname: req.session.displayname
+				displayname: req.session.displayname,
+				bas_url : process.env.base_url
 			});
 		})
 	})
@@ -142,7 +143,8 @@ exports.add_cat = (req, res, next) => {
 			cat: form_setting[0].cat,
 			setting_header: req.session.header,
 			body_color: req.session.body_color,
-			displayname: req.session.displayname
+			displayname: req.session.displayname,
+			bas_url : process.env.base_url
 		});
 	});
 }
@@ -169,7 +171,8 @@ exports.manage_cat = (req, res, next) => {
 			setting_header: req.session.header,
 			body_color: req.session.body_color,
 			catalist: catalist,
-			displayname: req.session.displayname
+			displayname: req.session.displayname,
+			bas_url : process.env.base_url
 		});
 	})
 }
@@ -202,7 +205,8 @@ exports.add_sub_cat = (req, res, next) => {
 				sub_cat: form_setting[0].sub_cat,
 				body_color: req.session.body_color,
 				cattitle: cattitle,
-				displayname: req.session.displayname
+				displayname: req.session.displayname,
+				bas_url : process.env.base_url
 			});
 		});
 	})
@@ -229,7 +233,8 @@ exports.manage_sub_cat = (req, res, next) => {
 			setting_header: req.session.header,
 			body_color: req.session.body_color,
 			subcatalist: subcatalist,
-			displayname: req.session.displayname
+			displayname: req.session.displayname,
+			bas_url : process.env.base_url
 		});
 	})
 }
@@ -296,7 +301,8 @@ exports.add_item = (req, res, next) => {
 					sub_cata: sub_cata,
 					setting_header: req.session.header,
 					body_color: req.session.body_color,
-					displayname: req.session.displayname
+					displayname: req.session.displayname,
+					bas_url : process.env.base_url
 				});
 			});
 		})
@@ -310,7 +316,8 @@ exports.manage_item = (req, res, next) => {
 			itemsdata: itemsdata,
 			setting_header: req.session.header,
 			body_color: req.session.body_color,
-			displayname: req.session.displayname
+			displayname: req.session.displayname,
+			bas_url : process.env.base_url
 		});
 	})
 }
@@ -324,7 +331,8 @@ exports.add_brand = (req, res, next) => {
 			setting_header: req.session.header,
 			brand: form_setting[0].brand,
 			body_color: req.session.body_color,
-			displayname: req.session.displayname
+			displayname: req.session.displayname,
+			bas_url : process.env.base_url
 		});
 	});
 }
@@ -350,7 +358,8 @@ exports.manage_brand = (req, res, next) => {
 			brandsdata: brandsdata,
 			setting_header: req.session.header,
 			body_color: req.session.body_color,
-			displayname: req.session.displayname
+			displayname: req.session.displayname,
+			bas_url : process.env.base_url
 		});
 
 	})

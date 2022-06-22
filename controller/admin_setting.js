@@ -3,6 +3,7 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 var db = require('../db.js');
 const fs = require('fs').promises;
+require('dotenv').config()
 
 
 
@@ -69,7 +70,8 @@ exports.companyprofileupdate = (req, res, next) => {
 					id: 1,
 					displayname: req.session.displayname,
 					body_color: req.session.body_color,
-					setting_header: req.session.header
+					setting_header: req.session.header,
+					bas_url : process.env.base_url
 				});
 			})
 		})

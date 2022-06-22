@@ -54,12 +54,13 @@
       }
     }
 
-    
+
 
     window.onload = () => {
       var deliver = '<%= deliver %>';
+      var bas_url = '<%= bas_url %>';
       if (deliver) {
-        location.replace("http://localhost:3000/desh_delivery")
+        location.replace(bas_url + "/desh_delivery")
       }
     };
 

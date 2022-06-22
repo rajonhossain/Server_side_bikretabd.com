@@ -26,7 +26,8 @@ db.connect(function (err) {
 exports.login = (req, res, next) => {
 	res.render('adminlogin', {
 		title: connection,
-		deliver : req.session.delivery
+		deliver : req.session.delivery,
+		bas_url : process.env.base_url
 	});
 }
 

@@ -106,6 +106,9 @@ const auth_middleware = (req, res, next) => {
 
 router.get('/', session_middleware, admin_login.login);
 
+
+
+
 router.get('/dashboard', auth_middleware, admin_login.dash);
 router.get('/regi', admin_login.regi);
 router.post('/login', admin_login.loginsystem);

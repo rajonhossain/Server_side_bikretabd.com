@@ -20,3 +20,17 @@ exports.delivery_logout = (req, res, next) => {
 	}
 }
 
+
+
+exports.delivery_man_registration = (req, res, next) => {
+	res.render('deliver_man/delivery_registration');
+}
+
+
+
+exports.delivery_man_registration_insert_data = (req, res, next) => {
+
+	console.log(req.body);
+
+	res.redirect('/desh_delivery/delivery_man_registration');
+}

@@ -1,36 +1,35 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-	<title>Admin_Delivery</title>
-	<!-- Favicon-->
+	<title>Admin_Delivery</title>	
 	<link rel="icon" href="favicon.ico" type="image/x-icon">
-
-
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet"
 		type="text/css">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
-
-	<!-- Bootstrap Core Css -->
-	<link href="../delivery_dashboard/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
-
-	<!-- Waves Effect Css -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">	
+	<link href="../delivery_dashboard/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">	
 	<link href="../delivery_dashboard/plugins/node-waves/waves.css" rel="stylesheet" />
-
-	<!-- Animation Css -->
 	<link href="../delivery_dashboard/plugins/animate-css/animate.css" rel="stylesheet" />
-
-	<!-- Morris Chart Css-->
 	<link href="../delivery_dashboard/plugins/morrisjs/morris.css" rel="stylesheet" />
-
-	<!-- Custom Css -->
 	<link href="../delivery_dashboard/css/style.css" rel="stylesheet">
-
-	<!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
 	<link href="../delivery_dashboard/css/themes/all-themes.css" rel="stylesheet" />
+	<style>
+		.sidebar_inactive{			
+   			overflow-y: hidden;
+			filter: grayscale(50%) blur(5px);
+			pointer-events: none;
+			position:fixed;	
+		}
+		.content_inactive{			
+   			overflow-y: hidden;
+			filter: grayscale(50%) blur(5px);
+			pointer-events: none;
+			
+		}
+
+	</style>
 </head>
 
 <body class="theme-red">
@@ -91,7 +90,7 @@
 	<section>
 
 		<!-- Left Sidebar -->
-		<aside id="leftsidebar" class="sidebar">
+		<aside id="leftsidebar" class="sidebar <%= type != 'active' ? 'sidebar_inactive' : '' %>">
 			<!-- User Info -->
 			<div class="user-info">
 				<div class="image">
@@ -162,7 +161,7 @@
 
 	</section>
 
-	<section class="content">
+	<section class="content <%= type != 'active' ? 'content_inactive' : '' %>">
 		<div class="container-fluid">
 			<div class="block-header">
 				<h2>DASHBOARD</h2>

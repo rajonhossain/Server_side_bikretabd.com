@@ -71,7 +71,7 @@ exports.companyprofileupdate = (req, res, next) => {
 					displayname: req.session.displayname,
 					body_color: req.session.body_color,
 					setting_header: req.session.header,
-					bas_url : process.env.base_url
+					bas_url: process.env.base_url
 				});
 			})
 		})
@@ -106,5 +106,42 @@ exports.companyprofile_update = (req, res, next) => {
 }
 
 
+
+exports.manage_delivery_man = (req, res, next) => {
+
+	db.query('select * from delivery', function (error, all_delivery_man, fields) {
+
+		res.render('admin/manage_delivery_man', {
+			setting_header: req.session.header,
+			body_color: req.session.body_color,
+			displayname: req.session.displayname,
+			bas_url: process.env.base_url,
+			all_delivery_man: all_delivery_man
+		});
+	});
+}
+
+
+
+exports.typechange = (req, res, next) => {
+	
+	const id = req.params.id;
+
+	var type
+
+	if(req.params.type === 'inactive'){
+		type = 'active';
+	}else{
+		type = 'inactive';
+	}
+
+	console.log(1999, req.params.type);
+	console.log(2000, type);
+
+	var typechange = "UPDATE delivery SET type = '" + type + "' WHERE id =  " + req.params.id;
+	db.query(typechange);
+
+	res.redirect('/admin/manage_delivery_man');
+}
 
 

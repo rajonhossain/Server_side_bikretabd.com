@@ -210,12 +210,11 @@ router.post('/company_profile_update', companyprofile.single('company_logo'), ad
 
 
 
+// delivery start
+router.get('/manage_delivery_man', auth_middleware,admin_setting.manage_delivery_man);
 
-
-
-
-
-
+router.get('/typechange/:type/:id', auth_middleware, admin_setting.typechange);
+// delivery End
 
 
 

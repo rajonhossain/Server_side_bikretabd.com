@@ -108,12 +108,14 @@ exports.loginsystem = (req, res, next) => {
 
 		if (username != '' && password != '') {
 			db.query('SELECT * FROM delivery WHERE username = ?', [username], function (error, results, fields) {
-
+				
 				if (results.length > 0) {
 					bcrypt.compare(password, results[0].dbpassword, function (err, ress) {
 						if (!ress) {
 							res.redirect('/admin');
-						} else {							
+						} else {				
+							req.session.type = results[0].type;											
+							console.log(19, req.session.type)		
 							req.session.delivery = panel_name;							
 							res.redirect('/desh_delivery');
 						}
@@ -366,8 +368,7 @@ exports.manage_brand = (req, res, next) => {
 
 	})
 }
-
-
-
-
 // end brand
+
+
+

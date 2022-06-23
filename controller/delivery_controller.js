@@ -6,7 +6,9 @@ const fs = require('fs').promises;
 
 
 exports.dashboard = (req, res, next) => {
-	res.render('deliver_man/delivery_dashboard');
+	res.render('deliver_man/delivery_dashboard',{
+		type : req.session.type
+	});
 }
 
 

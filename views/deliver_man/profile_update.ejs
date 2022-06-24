@@ -90,9 +90,9 @@
 
 						<div class="form-group">
 							<label for="exampleInputEmail1">Profile Photo</label>
-							<input type="file" class="form-control" name="photo">
-							<img src="/delivery_dashboard/images/<%= updatedata.photo %>"
-								alt="Girl in a jacket" class="img_show">
+							<input type="file" class="form-control" name="photo" onchange="deliveryphoto(event)">
+							<img src="/delivery_dashboard/images/<%= updatedata.photo %>" alt="Girl in a jacket"
+								class="img_show" id="img_show">
 						</div>
 
 						<div class="form-group">
@@ -126,6 +126,22 @@
 
 				</div>
 			</section>
+
+
+
+			<script>
+				var deliveryphoto = function (event) {
+					var output = document.getElementById('img_show');
+					output.src = URL.createObjectURL(event.target.files[0]);
+					output.onload = function () {
+						URL.revokeObjectURL(output.src) // free memory
+					}
+				};
+
+
+			</script>
+
+
 
 			<!-- Jquery Core Js -->
 			<script src="../delivery_dashboard/plugins/jquery/jquery.min.js"></script>

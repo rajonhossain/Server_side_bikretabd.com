@@ -111,6 +111,7 @@ exports.loginsystem = (req, res, next) => {
 				
 				if (results.length > 0) {
 					bcrypt.compare(password, results[0].dbpassword, function (err, ress) {
+						console.log(results[0].dbpassword);
 						if (!ress) {
 							res.redirect('/admin');
 						} else {				

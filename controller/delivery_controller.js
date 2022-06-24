@@ -3,11 +3,12 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 var db = require('../db.js');
 const fs = require('fs').promises;
+const bcrypt = require('bcrypt');
 
 
 exports.dashboard = (req, res, next) => {
-	res.render('deliver_man/delivery_dashboard',{
-		type : req.session.type
+	res.render('deliver_man/delivery_dashboard', {
+		type: req.session.type
 	});
 }
 
@@ -23,14 +24,39 @@ exports.delivery_logout = (req, res, next) => {
 
 
 exports.delivery_man_registration = (req, res, next) => {
-	res.render('deliver_man/delivery_registration');
+	
+	res.render('deliver_man/delivery_registration', {
+		error: req.flash('error')
+	});
 }
 
 
 
 exports.delivery_man_registration_insert_data = (req, res, next) => {
 
-	console.log(req.body);
+	const user_name = req.body.user_name;
+	const email = req.body.email;
+	const nid_number = req.body.nid_number;
+	const phone_number = req.body.phone_number;
+	const password = req.body.password;
+	const address = req.body.address;
 
-	res.redirect('/desh_delivery/delivery_man_registration');
+	try {
+
+		if (email != '' && password != '') {
+
+			const hashPass = bcrypt.hashSync(password, 10);
+			var delivery_man_registration = "INSERT INTO delivery (display_name,username,dbpassword,email,nid_number,phone) VALUES ('" + user_name + "','" + email + "','" + hashPass + "','" + email + "','" + nid_number + "','" + phone_number + "')";
+			db.query(delivery_man_registration);
+			res.redirect('/admin');
+		}else{
+			res.redirect('/desh_delivery/delivery_man_registration');	
+		}
+	} catch (e) {
+		req.flash('error', e)
+		console.log(500, "error")
+		res.redirect('/desh_delivery/delivery_man_registration');
+	}
+
+
 }

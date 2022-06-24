@@ -14,13 +14,14 @@
 
     .header_one {
       padding-bottom: 41px;
-      font-size: 21px;      
+      font-size: 21px;
       padding-top: 10px;
       font-weight: bold;
       color: #12218f;
     }
-  
- 
+    .dd{
+      color: red;
+    }
   </style>
 </head>
 
@@ -29,28 +30,36 @@
     <div class="form">
       <div class="header_one"> Delivery Man Registration</div>
       <form action="/desh_delivery/delivery_man_registration_insert_data" method="post">
-        <input type="text" name="user_name" placeholder="User Name" required>
+        <input type="text" name="user_name" placeholder="User Name">
 
-        <input type="email" name="email" placeholder="Email address" required>
+        <input type="email" name="email" placeholder="Email address">
 
-        <input type="text" name="nid_number" placeholder="NID Number" required>
+        <input type="text" name="nid_number" placeholder="NID Number">
 
-        <input type="text" name="phone_number" placeholder="Phone Number" required>
+        <input type="text" name="phone_number" placeholder="Phone Number">
 
-        <input type="password" name="password" placeholder="Password" onchange="smyFunction()" id="reg_pass" style="position: relative" required>
+        
+        
+      
+      
+
+        <input type="password" name="password" placeholder="Password" onchange="smyFunction()" id="reg_pass"
+          style="position: relative">
         <img src="https://pixlok.com/wp-content/uploads/2021/10/Eye-Icon-wsj93.png" alt="Girl in a jacket"
           class="password_eye" onclick="regi_password()">
 
-        <input type="password" name="confirm_password" onchange="smyFunction()" placeholder="Confirm Password" id="confirm_password"
-          style="position: relative" required>
+        <input type="password" name="confirm_password" onchange="smyFunction()" placeholder="Confirm Password"
+          id="confirm_password" style="position: relative">
         <img src="https://pixlok.com/wp-content/uploads/2021/10/Eye-Icon-wsj93.png" alt="Girl in a jacket"
           class="confirm_password_eye" onclick="confirmpasswordshow()">
-
-        <button type="submit" class="btn login_btn">Login</button> <br />  <br />
         
+          <textarea rows="8" name="address" cols="45" placeholder="Full Address"></textarea>
+
+          <button type="submit" class="btn login_btn">Login</button> <br /> <br />
+
         <a href="/desh_delivery" class="btn btn-danger" style="text-decoration: name">back to login</a>
 
-        
+
 
 
 
@@ -73,7 +82,7 @@
         document.getElementById('reg_pass').type = 'password';
       }
     }
-
+0
 
     function confirmpasswordshow() {
       var passwords = document.getElementById('confirm_password');
@@ -84,15 +93,15 @@
       }
     }
 
-    
+
     function smyFunction() {
       var passwords = document.getElementById("reg_pass").value;
       var confirmpasswords = document.getElementById("confirm_password").value;
 
-      if (passwords != confirmpasswords) {        
+      if (passwords != confirmpasswords) {
         document.getElementById("reg_pass").style.color = "red";
         document.getElementById("confirm_password").style.color = "red";
-      }else{
+      } else {
         document.getElementById("reg_pass").style.color = "black";
         document.getElementById("confirm_password").style.color = "black";
       }

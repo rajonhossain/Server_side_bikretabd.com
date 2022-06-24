@@ -61,3 +61,20 @@ exports.delivery_man_registration_insert_data = (req, res, next) => {
 
 
 }
+
+
+
+exports.profile_update = (req, res, next) => {
+
+	const id = req.session.uuid;
+
+	db.query("select * from delivery where id = '" + id + "'", function (error, deliveryupdate, fields) {
+			
+		console.log(deliveryupdate[0].display_name);
+
+		res.render('deliver_man/profile_update',{
+			type: req.session.type,
+			updatedata: deliveryupdate[0]
+		});
+	})
+}

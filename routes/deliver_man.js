@@ -26,6 +26,8 @@ router.get('/delivery_logoute/:delivery', auth_middleware, delivery_controller.d
 router.get('/delivery_man_registration', delivery_controller.delivery_man_registration);
 router.post('/delivery_man_registration_insert_data', delivery_controller.delivery_man_registration_insert_data);
 
+router.get('/profile_update', auth_middleware, delivery_controller.profile_update);
+
 // deliver registration end
 
 

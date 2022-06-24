@@ -51,79 +51,26 @@
 		</div>
 	</div>
 	
+	<!-- header top bar start -->
+	<%- include('header.ejs') %>
+	<!-- header top bar end -->
 
-	<section>
-
-		<!-- Left Sidebar -->
-		<aside id="leftsidebar" class="sidebar <%= type != 'active' ? 'sidebar_inactive' : '' %>">
-			<!-- User Info -->
-			<div class="user-info">
-				<div class="image">
-					<img src="../delivery_dashboard/images/user.png" width="48" height="48" alt="User" />
-				</div>
-				<div class="info-container">
-					<div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Delivery_man
-					</div>
-					<div class="email">delivery_man@gmail.com</div>
-
-				</div>
+	<!-- side bar start -->
+	<%- include('side_bar.ejs') %>
+	<!-- side bar end -->
+	
+	<section class="content <%= type != 'active' ? 'content_inactive' : '' %>">
+		<div class="container-fluid">
+			<div class="block-header" style="background-color: #d35252; padding: 15px">
+				<span style="color: white">Profile Update</span>
 			</div>
-			<!-- #User Info -->
-			<!-- Menu -->
-			<div class="menu">
-				<ul class="list">
-					<li class="header">MAIN List</li>
-					<li class="active">
-						<a href="">
-							<i class="material-icons">home</i>
-							<span>Home</span>
-						</a>
-					</li>
-					<li>
-						<a href="">
-							<i class="material-icons">text_fields</i>
-							<span>Typography</span>
-						</a>
-					</li>
-					<li>
-						<a href="">
-							<i class="material-icons">layers</i>
-							<span>Helper Classes</span>
-						</a>
-					</li>
-					<li>
-						<a href="javascript:void(0);" class="menu-toggle">
-							<i class="material-icons">widgets</i>
-							<span>Widgets</span>
-						</a>
-						<ul class="ml-menu">
-							<li>
-								<a href="javascript:void(0);" class="menu-toggle">
-									<span>Cards</span>
-								</a>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<a href="javascript:void(0);" class="menu-toggle">
-							<i class="material-icons">swap_calls</i>
-							<span>Settings</span>
-						</a>
-						<ul class="ml-menu">
-							<li>
-								<a href="/desh_delivery/profile_update">Profile Update</a>
-							</li>
-							<li>
-								<a href="">Alerts</a>
-							</li>
-						</ul>
-					</li>
-				</ul>
-			</div>
-			<!-- #Menu -->
+			asdfsf
 
-		</aside>
-		
+			<%= updatedata.display_name %>
+
+			<%= updatedata.username %>
+			  
+		</div>
 	</section>
 
 	<!-- Jquery Core Js -->

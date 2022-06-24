@@ -111,12 +111,12 @@ exports.loginsystem = (req, res, next) => {
 				
 				if (results.length > 0) {
 					bcrypt.compare(password, results[0].dbpassword, function (err, ress) {
-						console.log(results[0].dbpassword);
+						console.log(99999, results[0].id);
 						if (!ress) {
 							res.redirect('/admin');
 						} else {				
-							req.session.type = results[0].type;											
-							console.log(19, req.session.type)		
+							req.session.type = results[0].type;																		
+							req.session.uuid = results[0].id;
 							req.session.delivery = panel_name;							
 							res.redirect('/desh_delivery');
 						}

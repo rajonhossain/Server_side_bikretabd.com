@@ -59,12 +59,13 @@
 			<!-- User Info -->
 			<div class="user-info">
 				<div class="image">
-					<img src="../delivery_dashboard/images/user.png" width="48" height="48" alt="User" />
+					<img src="/delivery_dashboard/images/<%= updatedata.photo %>" width="48" height="48" alt="User" />
 				</div>
 				<div class="info-container">
-					<div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Delivery_man
+					<div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<%= updatedata.display_name %>
 					</div>
-					<div class="email">delivery_man@gmail.com</div>
+					<div class="email"><%= updatedata.email %></div>
 
 				</div>
 			</div>

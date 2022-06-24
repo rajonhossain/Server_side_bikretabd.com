@@ -7,9 +7,14 @@ const bcrypt = require('bcrypt');
 
 
 exports.dashboard = (req, res, next) => {
-	res.render('deliver_man/delivery_dashboard', {
-		type: req.session.type
-	});
+	const id = req.session.uuid;
+
+	db.query("select * from delivery where id = '" + id + "'", function (error, deliveryupdate, fields) {
+		res.render('deliver_man/delivery_dashboard', {
+			type: req.session.type,
+			updatedata: deliveryupdate[0]
+		});
+	})
 }
 
 
@@ -24,7 +29,7 @@ exports.delivery_logout = (req, res, next) => {
 
 
 exports.delivery_man_registration = (req, res, next) => {
-	
+
 	res.render('deliver_man/delivery_registration', {
 		error: req.flash('error')
 	});
@@ -49,9 +54,9 @@ exports.delivery_man_registration_insert_data = (req, res, next) => {
 			var delivery_man_registration = "INSERT INTO delivery (display_name,username,dbpassword,email,nid_number,phone) VALUES ('" + user_name + "','" + email + "','" + hashPass + "','" + email + "','" + nid_number + "','" + phone_number + "')";
 			db.query(delivery_man_registration);
 			res.redirect('/admin');
-		}else{
+		} else {
 			req.flash('error', "will be no email or password or user name empty")
-			res.redirect('/desh_delivery/delivery_man_registration');	
+			res.redirect('/desh_delivery/delivery_man_registration');
 		}
 	} catch (e) {
 		req.flash('error', e)
@@ -69,10 +74,10 @@ exports.profile_update = (req, res, next) => {
 	const id = req.session.uuid;
 
 	db.query("select * from delivery where id = '" + id + "'", function (error, deliveryupdate, fields) {
-			
+
 		console.log(deliveryupdate[0].display_name);
 
-		res.render('deliver_man/profile_update',{
+		res.render('deliver_man/profile_update', {
 			type: req.session.type,
 			updatedata: deliveryupdate[0]
 		});

@@ -28,7 +28,21 @@
 			overflow-y: hidden;
 			filter: grayscale(50%) blur(5px);
 			pointer-events: none;
+		}
 
+		.save_btn {
+			width: 19%;
+			padding: 10px;
+			background: #bb5962;
+			color: white;
+			font-size: 16px;
+			border: none;
+		}
+
+		.img_show {
+			width: 100px;
+			height: 95px;
+			margin-top: 9px;
 		}
 	</style>
 </head>
@@ -50,48 +64,88 @@
 			<p>Please wait...</p>
 		</div>
 	</div>
-	
+
 	<!-- header top bar start -->
 	<%- include('header.ejs') %>
-	<!-- header top bar end -->
+		<!-- header top bar end -->
 
-	<!-- side bar start -->
-	<%- include('side_bar.ejs') %>
-	<!-- side bar end -->
-	
-	<section class="content <%= type != 'active' ? 'content_inactive' : '' %>">
-		<div class="container-fluid">
-			<div class="block-header" style="background-color: #d35252; padding: 15px">
-				<span style="color: white">Profile Update</span>
-			</div>
-			asdfsf
+		<!-- side bar start -->
+		<%- include('side_bar.ejs') %>
+			<!-- side bar end -->
 
-			<%= updatedata.display_name %>
+			<section class="content <%= type != 'active' ? 'content_inactive' : '' %>">
+				<div class="container-fluid">
+					<div class="block-header" style="background-color: #d35252; padding: 15px">
+						<span style="color: white">Profile Update</span>
+					</div>
 
-			<%= updatedata.username %>
-			  
-		</div>
-	</section>
 
-	<!-- Jquery Core Js -->
-	<script src="../delivery_dashboard/plugins/jquery/jquery.min.js"></script>
-	<script src="../delivery_dashboard/plugins/bootstrap/js/bootstrap.js"></script>
-	<script src="../delivery_dashboard/plugins/bootstrap-select/js/bootstrap-select.js"></script>
-	<script src="../delivery_dashboard/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
-	<script src="../delivery_dashboard/plugins/node-waves/waves.js"></script>
-	<script src="../delivery_dashboard/plugins/jquery-countto/jquery.countTo.js"></script>
-	<script src="../delivery_dashboard/plugins/raphael/raphael.min.js"></script>
-	<script src="../delivery_dashboard/plugins/morrisjs/morris.js"></script>
-	<script src="../delivery_dashboard/plugins/chartjs/Chart.bundle.js"></script>
-	<script src="../delivery_dashboard/plugins/flot-charts/jquery.flot.js"></script>
-	<script src="../delivery_dashboard/plugins/flot-charts/jquery.flot.resize.js"></script>
-	<script src="../delivery_dashboard/plugins/flot-charts/jquery.flot.pie.js"></script>
-	<script src="../delivery_dashboard/plugins/flot-charts/jquery.flot.categories.js"></script>
-	<script src="../delivery_dashboard/plugins/flot-charts/jquery.flot.time.js"></script>
-	<script src="../delivery_dashboard/plugins/jquery-sparkline/jquery.sparkline.js"></script>
-	<script src="../delivery_dashboard/js/admin.js"></script>
-	<script src="../delivery_dashboard/js/pages/index.js"></script>
-	<script src="../delivery_dashboard/js/demo.js"></script>
+					<form>
+						<input type="hidden" name="d_profile_id" value="<%= updatedata.id %>">
+						<div class="form-group">
+							<label for="exampleInputEmail1">Display Name</label>
+							<input type="email" class="form-control" value="<%= updatedata.display_name %>"
+								placeholder="Enter email" style="padding: 20px">
+						</div>
+
+						<div class="form-group">
+							<label for="exampleInputEmail1">Profile Photo</label>
+							<input type="file" class="form-control" name="photo">
+							<img src="/delivery_dashboard/images/<%= updatedata.photo %>"
+								alt="Girl in a jacket" class="img_show">
+						</div>
+
+						<div class="form-group">
+							<label for="exampleInputEmail1">Votaer Id Number</label>
+							<input type="email" class="form-control" value="<%= updatedata.nid_number %>"
+								placeholder="Enter email" style="padding: 20px">
+						</div>
+
+
+						<div class="form-group">
+							<label for="exampleInputEmail1">Phone Number</label>
+							<input type="email" class="form-control" value="<%= updatedata.phone %>"
+								placeholder="Enter email" style="padding: 20px">
+						</div>
+
+						<div class="form-group">
+							<label for="exampleInputEmail1">Email address</label>
+							<input type="email" class="form-control" value="<%= updatedata.email %>"
+								placeholder="Enter email"
+								style="border: 1px solid white; background: gray; padding: 20px; color: white" readonly>
+						</div>
+
+						<div class="form-group">
+							<button type="submit" class="save_btn">Save</button>
+						</div>
+						<br />
+
+					</form>
+
+
+
+				</div>
+			</section>
+
+			<!-- Jquery Core Js -->
+			<script src="../delivery_dashboard/plugins/jquery/jquery.min.js"></script>
+			<script src="../delivery_dashboard/plugins/bootstrap/js/bootstrap.js"></script>
+			<script src="../delivery_dashboard/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+			<script src="../delivery_dashboard/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+			<script src="../delivery_dashboard/plugins/node-waves/waves.js"></script>
+			<script src="../delivery_dashboard/plugins/jquery-countto/jquery.countTo.js"></script>
+			<script src="../delivery_dashboard/plugins/raphael/raphael.min.js"></script>
+			<script src="../delivery_dashboard/plugins/morrisjs/morris.js"></script>
+			<script src="../delivery_dashboard/plugins/chartjs/Chart.bundle.js"></script>
+			<script src="../delivery_dashboard/plugins/flot-charts/jquery.flot.js"></script>
+			<script src="../delivery_dashboard/plugins/flot-charts/jquery.flot.resize.js"></script>
+			<script src="../delivery_dashboard/plugins/flot-charts/jquery.flot.pie.js"></script>
+			<script src="../delivery_dashboard/plugins/flot-charts/jquery.flot.categories.js"></script>
+			<script src="../delivery_dashboard/plugins/flot-charts/jquery.flot.time.js"></script>
+			<script src="../delivery_dashboard/plugins/jquery-sparkline/jquery.sparkline.js"></script>
+			<script src="../delivery_dashboard/js/admin.js"></script>
+			<script src="../delivery_dashboard/js/pages/index.js"></script>
+			<script src="../delivery_dashboard/js/demo.js"></script>
 </body>
 
 </html>

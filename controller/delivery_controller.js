@@ -43,13 +43,14 @@ exports.delivery_man_registration_insert_data = (req, res, next) => {
 
 	try {
 
-		if (email != '' && password != '') {
+		if (email.length != 0 && password.length != 0 && user_name.length != 0) {
 
 			const hashPass = bcrypt.hashSync(password, 10);
 			var delivery_man_registration = "INSERT INTO delivery (display_name,username,dbpassword,email,nid_number,phone) VALUES ('" + user_name + "','" + email + "','" + hashPass + "','" + email + "','" + nid_number + "','" + phone_number + "')";
 			db.query(delivery_man_registration);
 			res.redirect('/admin');
 		}else{
+			req.flash('error', "will be no email or password or user name empty")
 			res.redirect('/desh_delivery/delivery_man_registration');	
 		}
 	} catch (e) {

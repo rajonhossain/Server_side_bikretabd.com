@@ -94,13 +94,11 @@ exports.getprofile = (req, res, next) => {
 
 exports.companyprofile_update = (req, res, next) => {
 	
+	try {
 	const company_name = req.body.company_name;
 	const company_address = req.body.company_address;
 	const company_img = req.file.filename;
 
-	console.log(101, 'test');
-
-	try {
 		db.query("select * from admin_profile WHERE id = '" + 1 + "'", function (error, profile_id, fields) {
 			fs.unlink('./public/company_info/' + profile_id[0].company_img);
 			var company_profile = "UPDATE admin_profile SET company_name = '" + company_name + "', company_address = '" + company_address + "', company_img = '" + company_img + "' WHERE id = 1";

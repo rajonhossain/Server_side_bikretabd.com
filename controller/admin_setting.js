@@ -93,16 +93,25 @@ exports.getprofile = (req, res, next) => {
 
 
 exports.companyprofile_update = (req, res, next) => {
+	
 	const company_name = req.body.company_name;
 	const company_address = req.body.company_address;
 	const company_img = req.file.filename;
 
-	db.query("select * from admin_profile WHERE id = '" + 1 + "'", function (error, profile_id, fields) {
-		fs.unlink('./public/company_info/' + profile_id[0].company_img);
-		var company_profile = "UPDATE admin_profile SET company_name = '" + company_name + "', company_address = '" + company_address + "', company_img = '" + company_img + "' WHERE id = 1";
-		db.query(company_profile);
+	console.log(101, 'test');
+
+	try {
+		db.query("select * from admin_profile WHERE id = '" + 1 + "'", function (error, profile_id, fields) {
+			fs.unlink('./public/company_info/' + profile_id[0].company_img);
+			var company_profile = "UPDATE admin_profile SET company_name = '" + company_name + "', company_address = '" + company_address + "', company_img = '" + company_img + "' WHERE id = 1";
+			db.query(company_profile);
+			res.redirect('/admin/company_update');
+		})
+	}
+	catch (err) {
 		res.redirect('/admin/company_update');
-	})
+	}
+
 }
 
 
@@ -124,14 +133,14 @@ exports.manage_delivery_man = (req, res, next) => {
 
 
 exports.typechange = (req, res, next) => {
-	
+
 	const id = req.params.id;
 
 	var type
 
-	if(req.params.type === 'inactive'){
+	if (req.params.type === 'inactive') {
 		type = 'active';
-	}else{
+	} else {
 		type = 'inactive';
 	}
 

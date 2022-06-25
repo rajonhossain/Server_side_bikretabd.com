@@ -229,7 +229,7 @@ exports.insertsubcat = (req, res, next) => {
 	const image_path = process.env.base_url+"/subcatagory";
 	const subcategory_id = req.body.subcategory_id;
 
-	var add_subcatagory = "INSERT INTO subcategories (name, slug, sub_catagory_img, image_path, category_id) VALUES('" + name + "','" + slug + "','" + sub_catagory_img + "','" + image_path + "','" + subcategory_id + "')";
+	var add_subcatagory = "INSERT INTO subcategories (name, slug, sub_catagory_img, category_id) VALUES('" + name + "','" + slug + "','" + sub_catagory_img + "','" + subcategory_id + "')";
 	db.query(add_subcatagory);
 
 	res.redirect('/admin/add_sub_catagory');
@@ -285,7 +285,6 @@ exports.insertitems = (req, res, next) => {
 	const details = req.body.details;
 	const fontimg = req.files[0].filename;
 	const backimg = req.files[1].filename;
-	const image_path = process.env.base_url+"/items_image_file";
 	const discount_price = req.body.dis_price;
 	const regular_price = req.body.regular_price;
 	const stock = req.body.stock;
@@ -294,7 +293,7 @@ exports.insertitems = (req, res, next) => {
 
 
 
-	var add_items = "INSERT INTO items(item_name, sub_cat_id, brand_id, slug, details, fontimg, backimg, image_path, discount_price, regular_price, stock, status, link) VALUES('" + item_name + "','" + sub_cat_id + "','" + brand_id + "','" + slug + "','" + details + "','" + fontimg + "','" + backimg + "','" + image_path + "','" + discount_price + "','" + regular_price + "','" + stock + "','" + status + "','" + link + "')";
+	var add_items = "INSERT INTO items(item_name, sub_cat_id, brand_id, slug, details, fontimg, backimg, discount_price, regular_price, stock, status, link) VALUES('" + item_name + "','" + sub_cat_id + "','" + brand_id + "','" + slug + "','" + details + "','" + fontimg + "','" + backimg + "','" + discount_price + "','" + regular_price + "','" + stock + "','" + status + "','" + link + "')";
 	db.query(add_items);
 	res.redirect('/admin/add_item');
 }
@@ -351,9 +350,8 @@ exports.insertbrand = (req, res, next) => {
 	const brand_name = req.body.brand_name;
 	const slug = brand_name.replace(" ", "-");
 	const brand_img = req.file.filename;
-	const image_path = process.env.base_url+"/brand_image_path";
-
-	var add_brand = "INSERT INTO brands(brand_name, slug, brand_img, image_path)VALUES ('" + brand_name + "','" + slug + "','" + brand_img + "','" + image_path + "')";
+	
+	var add_brand = "INSERT INTO brands(brand_name, slug, brand_img)VALUES ('" + brand_name + "','" + slug + "','" + brand_img +"')";
 	db.query(add_brand);
 	res.redirect('/admin/add_brand');
 }

@@ -143,6 +143,8 @@ exports.loginsystem = (req, res, next) => {
 // start catagory
 
 exports.add_cat = (req, res, next) => {
+	
+
 	db.query('select * from admin_add_form_setting', function (error, form_setting, fields) {
 		res.render('admin/add_catagory', {
 			cat: form_setting[0].cat,
@@ -155,13 +157,15 @@ exports.add_cat = (req, res, next) => {
 }
 
 exports.insertcat = (req, res, next) => {
+	console.log(159, req.body);
+
 	const name = req.body.name;
 	const slug = name.replace(" ", "-");
 	const catagory_img = req.file.filename;
 	const image_path = process.env.base_url+"/catagory";
 	const meta_description = req.body.metadescription;
 
-	var add_catagory = "INSERT INTO catagoris (name, slug, catagory_img, image_path, meta_description) VALUES ('" + name + "','" + slug + "','" + catagory_img + "','" + image_path + "','" + meta_description + "')";
+	var add_catagory = "INSERT INTO catagoris (name, slug, catagory_img, meta_description) VALUES ('" + name + "','" + slug + "','" + catagory_img + "','" + meta_description + "')";
 	const insertdata = db.query(add_catagory);
 
 	res.redirect('/admin/add_catagory');
@@ -370,6 +374,5 @@ exports.manage_brand = (req, res, next) => {
 	})
 }
 // end brand
-
 
 

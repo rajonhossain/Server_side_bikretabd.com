@@ -83,3 +83,15 @@ exports.profile_update = (req, res, next) => {
 		});
 	})
 }
+
+
+
+
+exports.deliveryadd = (req, res, next) => {
+	
+	console.log("159 rajon", req.body); 
+ 
+
+	res.redirect('/desh_delivery/profile_update');
+}
+

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Bikreta bd অনলাইন শপিং মার্কেটপ্লেস 2022</title>
+  <link rel="icon" href="/company_info/1655479544703.jpg" type="image/x-icon">
+  <link href="/admin_login_asset/style.css" rel="stylesheet" />
+  <style>
+    .login-page {
+      width: 60%;
+      margin-top: -5%;
+    }
+
+    .header_one {
+      padding-bottom: 41px;
+      font-size: 21px;
+      padding-top: 10px;
+      font-weight: bold;
+      color: #12218f;
+    }
+
+    .dd {
+      color: red;
+    }
+
+    .field_form {
+      font-size: 16px;
+      color: red;
+      top: 50px;
+    }
+
+    .error_hide {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="login-page">
+    <div class="form">
+      <div class="header_one"> Delivery Man Registration <br /> <span
+          class="<%= error.length != 0 ? 'field_form' : 'error_hide' %> ">Registration Failed</span></div>
+      <form action="/desh_delivery/delivery_man_registration_insert_data" method="post">
+        <input type="text" name="user_name" placeholder="User Name">
+
+        <input type="email" name="email" placeholder="Email address">
+
+        <input type="text" name="nid_number" placeholder="NID Number">
+
+        <input type="text" name="phone_number" placeholder="Phone Number">
+
+        <input type="password" name="password" placeholder="Password" onchange="smyFunction()" id="reg_pass"
+          style="position: relative">
+        <img src="https://pixlok.com/wp-content/uploads/2021/10/Eye-Icon-wsj93.png" alt="Girl in a jacket"
+          class="password_eye" onclick="regi_password()">
+
+        <input type="password" name="confirm_password" onchange="smyFunction()" placeholder="Confirm Password"
+          id="confirm_password" style="position: relative">
+        <img src="https://pixlok.com/wp-content/uploads/2021/10/Eye-Icon-wsj93.png" alt="Girl in a jacket"
+          class="confirm_password_eye" onclick="confirmpasswordshow()">
+
+        <textarea rows="8" name="address" cols="45" placeholder="Full Address"></textarea>
+
+        <button type="submit" class="btn login_btn">Login</button> <br /> <br />
+
+        <a href="/desh_delivery" class="btn btn-danger" style="text-decoration: name">back to login</a>
+
+
+
+
+
+
+      </form>
+    </div>
+  </div>
+  <!-- partial -->
+
+
+
+  <script>
+
+
+    function regi_password() {
+      var passwords = document.getElementById('reg_pass');
+      if (passwords.type != "text") {
+        document.getElementById('reg_pass').type = 'text';
+      } else {
+        document.getElementById('reg_pass').type = 'password';
+      }
+    }
+    0
+
+    function confirmpasswordshow() {
+      var passwords = document.getElementById('confirm_password');
+      if (passwords.type != "text") {
+        document.getElementById('confirm_password').type = 'text';
+      } else {
+        document.getElementById('confirm_password').type = 'password';
+      }
+    }
+
+
+    function smyFunction() {
+      var passwords = document.getElementById("reg_pass").value;
+      var confirmpasswords = document.getElementById("confirm_password").value;
+
+      if (passwords != confirmpasswords) {
+        document.getElementById("reg_pass").style.color = "red";
+        document.getElementById("confirm_password").style.color = "red";
+      } else {
+        document.getElementById("reg_pass").style.color = "black";
+        document.getElementById("confirm_password").style.color = "black";
+      }
+
+    };
+
+  </script>
+
+
+  <script src="/admin_login_asset/script.js"></script>
+  <script src="/admin_login_asset/jquery.min.js"></script>
+</body>
+
+</html>

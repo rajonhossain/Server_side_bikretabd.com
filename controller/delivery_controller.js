@@ -88,10 +88,33 @@ exports.profile_update = (req, res, next) => {
 
 
 exports.deliveryadd = (req, res, next) => {
+		
+	try {
+		const d_profile_id = req.body.d_profile_id;
+		const display_name = req.body.display_name;
+		const photo = req.file.filename;
+		const nid_number = req.body.nid_number;
+		const phone = req.body.phone;
 	
-	console.log("159 rajon", req.body); 
- 
+		db.query("select * from delivery WHERE id = '" + d_profile_id + "'", function (error, results, fields) {
+	
+			console.log(111, results[0].photo)
+	
+			const filedelete = fs.unlink('./public/delivery_dashboard/images/' + results[0].photo);		
+	
+			if(filedelete){
+				var deliver_profile_update = "UPDATE delivery SET display_name = '" + display_name + "', photo = '" + photo + "', nid_number = '" + nid_number + "', phone = '" + phone + "' WHERE id = "+ d_profile_id + ""; 
+				db.query(deliver_profile_update); 
+				res.redirect('/desh_delivery/profile_update');
+			}else{
+				res.redirect('/desh_delivery/profile_update');
+			}
+	
+		})
+	  }
+	  catch(err) {
+		res.redirect('/desh_delivery/profile_update');
+	  }
 
-	res.redirect('/desh_delivery/profile_update');
 }
 

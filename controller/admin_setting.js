@@ -152,3 +152,19 @@ exports.typechange = (req, res, next) => {
 }
 
 
+
+
+exports.manage_items_order = (req, res, next) => {
+
+
+	db.query('select * from delivery', function (error, all_delivery_man, fields) {
+
+			res.render('admin/manage_items_order', {
+			setting_header: req.session.header,
+			body_color: req.session.body_color,
+			displayname: req.session.displayname,
+			bas_url: process.env.base_url,	
+			all_delivery_man: all_delivery_man		
+		});
+	});
+}

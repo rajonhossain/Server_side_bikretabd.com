@@ -220,12 +220,11 @@ router.get('/typechange/:type/:id', auth_middleware, admin_setting.typechange);
 // delivery End
 
 
-// router.post('/deliveryadd', upload.single('photos'), admin_login.deliveryadd);
 
 
-
-
-
+// admin Items Order start
+router.get('/manage_items_order', auth_middleware,admin_setting.manage_items_order);
+// admin Items Order End
 
 
 

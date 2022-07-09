@@ -1,0 +1,23 @@
+{
+  "name": "express-cross",
+  "version": "1.0.0",
+  "description": "CORS middleware for express",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/plasmashadow/express-cross"
+  },
+  "keywords": [
+    "cors",
+    "express"
+  ],
+  "author": "plasmashadow",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/plasmashadow/express-cross/issues"
+  },
+  "homepage": "https://github.com/plasmashadow/express-cross"
+}

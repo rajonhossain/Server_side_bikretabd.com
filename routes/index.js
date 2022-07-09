@@ -1,4 +1,5 @@
 var express = require('express');
+var cors = require('cors')
 var router = express.Router();
 var multer = require('multer');
 var bodyParser = require('body-parser');
@@ -8,6 +9,14 @@ var admin_setting = require('../controller/admin_setting');
 var client_app = require('../controller/client_app');
 
 var delivery_controller = require('../controller/delivery_controller');
+
+
+router.use(cors())
+
+var corsOptions = {
+  origin: 'localhost:4000/admin',
+  optionsSuccessStatus: 200 
+}
 
 
 var storage = multer.diskStorage({

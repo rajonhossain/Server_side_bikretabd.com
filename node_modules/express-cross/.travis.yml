@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+- '0.12'
+- '0.11'
+- '0.10'
+deploy:
+  provider: npm
+  email: plasmashadowx@gmail.com
+  api_key:
+    secure: YkG4Msa7lZXvtrWrZ3sKsOMLsfXdrFQ2cUvOw1KVJ3wzhf/BblQ3sPf7gUwZMnx3DuiSkZ1amx+ypzW14cFDPF3i6yGFxIYK+TTaZtDjo5jw2lIRYfYBiDCRrAnQ/qH8qVvKcTu6GAhdHh0rHxZdE/AcDhRvDqXmQRHVOBFVtzs+anYslEHVmNyahHwSBhK3PU42Or4lWNhHSn+/y2CTEluiuVuVlk9qnE/5pagBGXZFxfuRRT7fG7I4f+gQjFh7aXfO9aInbJiNZW+LzyRXMBIUNgbdo0JMUH0ulV3ghBy695EzYuk1VLneRoUTlmhHzN/sZRD4vE3HImfZWdysRZ0Gxq8Vt8kajx8eJtbO6SlNPbHNfbB6UaiN5NrTty8BTURcwyZwusRaWYWUNNGiJmev7BsmG+G7cLIM4cauvzMuqxBe7ixznEwtxfj79HCg+HouFOLlCamRvR56Gazk+IQ2lSqkz0k/sKuBeFX1ythhmTCZyeeolgJJ/0b0TM8qi9VE739VBZRlXxQ2SWVG4J1KQLWle63pN2ERBqOSjuRN5P2g3fm0Od4mhjO6Scrfd/iz+714yTrkmPD770CVekPo0hYc3OcUt3a5BX+of6rM/5/vfblVIZaYOiGjAd6jw6uoZSOV+OWtKZHGKPDqf8WnhwZENnAYEq13lbZIjhY=
+  on:
+    repo: plasmashadow/express-cross
+    branch: master

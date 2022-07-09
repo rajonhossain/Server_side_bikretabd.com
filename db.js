@@ -5,10 +5,28 @@ var con = mysql.createConnection({
     database : 'bikretabd',
     user     : 'root',
     password : ''
-});
+}); 
+module.exports = con;
+
+
 
  
-module.exports = con;
+
+
+
+// var mysql = require('mysql');
+
+// var con = mysql.createConnection({
+// 	    host     : 'localhost',
+//      database : 'secret',
+//      user     : 'bikreta',
+//      password : 'secret_2030'
+// });
+ 
+// module.exports = con;
+
+
+
 
 
 

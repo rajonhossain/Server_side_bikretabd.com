@@ -5,16 +5,18 @@ var multer = require('multer');
 var bodyParser = require('body-parser');
 var admin_login = require('../controller/admin_login');
 var admin_setting = require('../controller/admin_setting');
-
 var client_app = require('../controller/client_app');
-
 var delivery_controller = require('../controller/delivery_controller');
+
+require('dotenv').config()
+
+console.log(process.env.base_url)
 
 
 router.use(cors())
 
 var corsOptions = {
-  origin: 'localhost:4000/admin',
+  origin: process.env.base_url+'/admin',
   optionsSuccessStatus: 200 
 }
 
@@ -164,7 +166,10 @@ router.get('/manage_sub_catagory', auth_middleware, admin_login.manage_sub_cat);
 router.get('/add_item', auth_middleware, admin_login.add_item);
 router.use('/itemsapifile', express.static('./public/items_image_file'));
 router.post('/item_add_data', itemsfile.array('imgfile', 2), admin_login.insertitems);
+
+router.get('/itemsdelete/:id', admin_login.itemsdelete);
 router.get('/manage_item', auth_middleware, admin_login.manage_item);
+
 // End Items
 
 

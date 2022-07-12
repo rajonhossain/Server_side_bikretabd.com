@@ -332,6 +332,24 @@ exports.manage_item = (req, res, next) => {
 // End Items
 
 
+exports.itemsdelete = (req, res, next) => {
+
+	db.query("select * from items WHERE id = '" + req.params.id + "'", function (error, results, fields) {
+		console.log(results)
+		const fontimg = fs.unlink('./public/items_image_file/' + results[0].fontimg);
+		const backimg = fs.unlink('./public/items_image_file/' + results[0].backimg);
+
+		if (fontimg && backimg) {
+			db.query("DELETE FROM items WHERE id = '" + req.params.id + "'", function (error, results, fields) {
+				res.redirect('/admin/manage_item');
+			})
+		} else {
+			res.redirect('/admin/manage_item');
+		}
+	})
+}
+
+
 // start brand 
 exports.add_brand = (req, res, next) => {
 	db.query('select * from admin_add_form_setting', function (error, form_setting, fields) {

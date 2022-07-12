@@ -153,7 +153,7 @@
             .then(data => {
                 console.log(data);
                 console.log(data.data[0].company_img)
-                document.getElementById("scompany_img").src = "/company_info/" + data.data[0].company_img;
+                document.getElementById("scompany_img").src = userId+"/company_info/" + data.data[0].company_img;
             });
     };
 </script>
